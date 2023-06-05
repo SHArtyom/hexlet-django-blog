@@ -1,10 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.base import TemplateView
 
-# def index(request):
-#     return render(request, 'article/index.html', context={
-#         'app_name': 'Articles',
-#     })
+
 class IndexView(TemplateView):
 
     template_name = "index.html"

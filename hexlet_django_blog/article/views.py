@@ -1,11 +1,10 @@
-from django.views.generic.base import TemplateView
+from django.views import View
+from django.shortcuts import render, redirect
 
 
-class IndexView(TemplateView):
+class IndexView(View):
 
-    template_name = "article/index.html"
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['app_name'] = 'Articles'
-        return context
+    def get(self, request, *args, **kwargs):
+        if not kwargs:
+            return redirect('article', tags='python', article_id=42)
+        return render(request, 'article/index.html', context=kwargs)
